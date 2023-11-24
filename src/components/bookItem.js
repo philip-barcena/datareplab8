@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 function BookItem(props) {
 
@@ -11,11 +12,12 @@ function BookItem(props) {
                         <img src={props.myBook.cover}></img>
                         <footer>
                             {props.myBook.author
-                            
+
                             }
                         </footer>
                     </blockquote>
                 </Card.Body>
+                <Link to={'/edit/' + props.myBook._id} className='btn btn-primary'>edit</Link>
             </Card>
             {/* <h3>{props.myBook.title}</h3>
             <img src={props.myBook.thumbnailUrl}></img>

@@ -39,6 +39,12 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('my_books', bookSchema);
 
+app.put('/api/book/:id',async(req, res)=>{
+  console.log("Update: "+req.params.id);
+
+  let book = await bookModel.findByIdAndUpdate(req.params.id,req.body, {new:true});
+})
+
 app.post('/api/book', (req,res)=>{
     console.log(req.body);
 
@@ -64,7 +70,7 @@ app.get('/api/books', async(req, res)=>{
 
 app.get('/api/book/:identifier',async (req,res)=>{
   console.log(req.params.identifier);
-
+  //
   let book = await bookModel.findById(req.params.identifier);
   res.send(book);
 })
